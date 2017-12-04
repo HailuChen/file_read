@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
-/**
- * Created by who on 2017/11/30.
- */
+
 public class ReadFileByNIO {
 
     public static void main(String[] args) throws IOException {

@@ -7,6 +7,8 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -14,9 +16,12 @@ import java.io.*;
 @Component
 public class ReadFileService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReadFileService.class);
+
     public  String validateFileContentType(String fileName) {
+        LOGGER.info(fileName);
         if (fileName.contains(".")) {
-            String fileType = fileName.split(".")[1];
+            String fileType = fileName.split("\\.")[1];
 
             if (fileType != null && fileType.toLowerCase().matches("pdf|xls|txt")) {
                 return fileType;

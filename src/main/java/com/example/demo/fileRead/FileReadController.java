@@ -1,6 +1,8 @@
 package com.example.demo.fileRead;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class FileReadController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileReadController.class);
 
     private static final int RET_CODE_SUCCESS            = 0;
     private static final String RET_MSG_SUCCESS          = "文件读取成功!";
@@ -39,6 +43,7 @@ public class FileReadController {
 
         try {
             String content = this.readFileService.readFile(file.getInputStream(), suffix);
+
             return new ReturnMessage(RET_CODE_SUCCESS, RET_MSG_SUCCESS, content);
         } catch (Exception e) {
             e.printStackTrace();
